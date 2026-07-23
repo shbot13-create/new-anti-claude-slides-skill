@@ -13,7 +13,7 @@ templates), audited against a checklist, and delivered as self-contained **1280x
 merged **PDF**; on request it also builds a fully **native, editable PPTX** (real shapes and text
 boxes, not images).
 
-**The rules in one paragraph:** one font (Montserrat) with hierarchy from weight + size + color;
+**The rules in one paragraph:** one font (Montserrat, never Thin or Light: minimum weight Regular 400) with hierarchy from weight + size + color;
 one single-line title per slide (a short summary sentence, no subtitles, no wrapping); flat design
 (no shadows, gradients, or rounded cards); a strict color-signal system where each color has exactly
 one meaning; dense bounded-cell layouts that fill the frame; sparing monochrome Lucide icons beside
@@ -185,9 +185,15 @@ ONLY), `oda-night #111F22` (footnote text, TEXT ONLY), `oda-paper #FFFFFF` (grou
 rule is waived under ODA). Under ODA: **no brown** (avoid `oda-bronze #815B3B`) and **no dark icon
 fills** — icon tiles are `oda-blue` with white icons; there is no gray, secondary text is `oda-blue`.
 
-## V2.2 One font, ever
+## V2.2 One font, ever — and NEVER Montserrat Thin
 Montserrat only — reaffirmed and absolute. No serif display face, no second family for titles,
 no exceptions for covers. Hierarchy comes from weight + size + color alone.
+**Never use Montserrat Thin or Light (weights 100–300).** The minimum weight anywhere — titles
+included — is **Regular 400** ("normal"); emphasis uses SemiBold 600 / Bold 700. This overrides the
+base spec's "light 300–400" title rule: titles are Regular 400. Do not load light weights in the
+Google Fonts link, and in PPTX exports make sure static Montserrat weights resolve (a variable
+Montserrat font file can silently render as Thin in PowerPoint — ship/install static
+Regular/SemiBold/Bold).
 
 ## V2.3 No em-dashes
 No em-dash anywhere in slide copy: use a colon, semicolon, or comma instead.

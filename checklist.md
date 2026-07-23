@@ -102,6 +102,8 @@ citing the rule. These map 1:1 to the hard rules in `SKILL.md`. No exceptions, n
       locked hexes only, no invented grays/tints, no brown (`#815B3B`), no dark icon fills —
       icon tiles are blue with white icons; white ground is allowed.
 - [ ] **One font**: Montserrat everywhere, including titles and covers. No serif, no second family.
+      NEVER Thin or Light (100-300): minimum weight Regular 400, titles included; no light weights
+      in the font link; PPTX exports must resolve static weights, not a variable-font Thin instance.
 - [ ] **No em-dashes** anywhere in copy (colon/semicolon/comma instead); en-dashes only in ranges.
 - [ ] **Facts only**: every claim sourced; source opinions are excluded-and-flagged or explicitly
       attributed; the deck's own classifications are labeled as such on the slide.
