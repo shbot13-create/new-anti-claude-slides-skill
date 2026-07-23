@@ -3,11 +3,44 @@ name: New-anti-claude-slides-skill
 description: "V2 of the anti-claude slide system: dense fact-card slides, Montserrat only, single-line titles, no em-dashes, facts-only with flagged opinions, optional named palettes (ODA), sanctioned real vendor logos, an entity-profile card template, and an airy logo-row variant for overloaded slides. Use when creating, generating, designing, building, or reviewing slides, decks, presentations, one-pagers, briefings, profile cards, comparisons, timelines, status boards, or metric readouts. Outputs self-contained 1280x720 HTML plus optional native PPTX. NO templates for content slides; every slide is composed fresh from tokens + primitives, gated by a checklist. Prefer this skill over Anti-claude-slides-skill-1 unless the user asks for the original."
 ---
 
-# Anti-claude-slides-skill-1
+# New Anti-Claude Slides Skill (V2)
 
-A slide-making **system governed by hard rules**. The rules below are NON-NEGOTIABLE — they are the
-binding contract, not guidance. Every rule must hold on every slide, in any arrangement. This skill
-**generates** slides from content and **reviews** existing slides, for any topic.
+## What this is
+A slide-making system governed by hard rules, for building **dense, institutional, credible
+fact-card decks** that never look like generic AI slides. It generates slides from your content and
+reviews existing slides, for any topic. Every slide is composed fresh from flat primitives (no
+templates), audited against a checklist, and delivered as self-contained **1280x720 HTML** plus a
+merged **PDF**; on request it also builds a fully **native, editable PPTX** (real shapes and text
+boxes, not images).
+
+**The rules in one paragraph:** one font (Montserrat) with hierarchy from weight + size + color;
+one single-line title per slide (a short summary sentence, no subtitles, no wrapping); flat design
+(no shadows, gradients, or rounded cards); a strict color-signal system where each color has exactly
+one meaning; dense bounded-cell layouts that fill the frame; sparing monochrome Lucide icons beside
+the labels they reinforce; every figure anchored to a date, named authority, or cited document; one
+quiet source foot with the page number at the far right; no em-dashes anywhere; facts only — any
+opinion found in a source is flagged to you or explicitly attributed, never silently included; and
+the deck is always the fewest slides the content allows.
+
+**Options you can invoke by name:**
+- **ODA palette** — say "use ODA colors": swaps the default navy/gray/teal/gold tokens for the locked
+  ODA set (steel blue `#678CA6`, blue tint `#D6E3EB`, sand golds `#C19667`/`#E2B06E`, deep teal ink,
+  white ground). Under ODA there is no gray, no brown, and icon tiles are blue with white icons.
+  Other named palettes can be added the same way; the default palette always stays unless you name one.
+- **Airy logo-row layout** — used automatically when a slide has too many items for bounded cells
+  (so it does not look boxy), or on request: hairline-separated rows with logos/icon tiles, and the
+  slide's defining criteria in one distinct header band under the title.
+- **Real vendor logos** — for slides profiling actual companies/products: authentic marks are fetched
+  and visually verified; anything unverifiable gets a palette icon tile instead.
+- **Entity-profile cards** — a 2x2 card template (logo, name, category · HQ, category + ownership
+  pills, one-line description, STRENGTHS / PROJECTS / BEST FOR panels, gold disclaimer strip for
+  caveats) for vendor/company/technology profile slides.
+- **Editable PPTX export** — ask for "editable" or "PPTX" and the deck is rebuilt as native
+  PowerPoint shapes, verified through LibreOffice before delivery.
+
+The full binding spec follows: the base hard rules, then the **V2 RULES** section that amends them.
+The rules below are NON-NEGOTIABLE — they are the binding contract, not guidance. Every rule must
+hold on every slide, in any arrangement.
 
 ## ⚠️ Rule 0 — NO STARTER SLIDES. Compose fresh, every time.
 This skill ships **zero template / starter slides on purpose.** Do NOT look for one, copy one, or

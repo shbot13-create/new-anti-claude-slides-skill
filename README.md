@@ -14,7 +14,7 @@ audit gate in `checklist.md` section 9.
 ## Install on another computer
 
 ```bash
-git clone https://github.com/sadaalfan/new-anti-claude-slides-skill.git \
+git clone https://github.com/shbot13-create/new-anti-claude-slides-skill.git \
   ~/.claude/skills/New-anti-claude-slides-skill
 ```
 
