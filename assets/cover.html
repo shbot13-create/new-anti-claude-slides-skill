@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--
+  Anti-claude-slides-skill-1 — COVER (the ONE sanctioned starter slide; see SKILL.md "Cover exception").
+  A cover is NOT a fact-card. It is the single deliberate exception to Rule 0 and to the density /
+  no-photo rules. Compose every OTHER slide fresh per the skill — never copy this layout into a content slide.
+
+  To use: swap the three slots only —
+    1. .cover-title  -> the deck title (navy, light, sentence/entity case; do NOT enlarge or recolor it)
+    2. .cover-date   -> the date (quiet gray label)
+    3. .cover-media img -> the deck image. ASK the user for one; if provided, uncomment the <img> and set
+       src (base64-embed it for a self-contained file). If NOT provided, leave it commented — the flat
+       --navy panel is the fallback. Online/AI sourcing only on explicit request. (See SKILL.md "THE COVER".)
+  Everything else stays put. The gold bars are the skill's sanctioned 2px accent rule — gold's ONE job.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cover</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== tokens.css — INLINED (single source of truth; do not redefine per slide) ===== */
+:root{
+  --ground:#FAFBFC;   /* slide ground — warm ivory. NEVER pure #FFFFFF. */
+  --panel:#F1F3F5;    /* faint region fill */
+  --hair:#E4E8EB;     /* hairline */
+  --ink:#25323B;      /* primary text */
+  --navy:#33485A;     /* structure */
+  --gray:#6B757C;     /* secondary text / inactive */
+  --muted:#9AA4AB;    /* tertiary / quiet */
+  --teal:#2F8F86;     /* ACTIVE — current/selected/best/positive */
+  --gold:#A9853F;     /* caveat / link / the thin 2px accent rule / scope tag */
+  --on-navy:#FFFFFF;
+
+  --fs-title:30px; --fs-body:15px; --fs-value:14px; --fs-label:12px;
+  --fs-source:11px; --fs-metric:30px;
+  --m:40px; --gap:14px; --pad:14px;
+  --font:'Montserrat',-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{display:flex;justify-content:center;background:#cfd4d8;font-family:var(--font)}
+.slide{width:1280px;height:720px;background:var(--ground);color:var(--ink);
+  font-family:var(--font);padding:var(--m);display:flex;flex-direction:column;position:relative}
+.title{font-size:var(--fs-title);font-weight:400;line-height:1.2;color:var(--ink);max-width:1180px}
+
+/* ===== COVER LAYOUT — the one sanctioned exception (see SKILL.md) =====
+   Exempt here ONLY: Rule 0 (this is the single reusable template), fact-card density / fill-the-frame,
+   the no-photo flatness clause, and the bounded-cell / rail / source-foot structure.
+   STILL binding: Montserrat-only · ivory ground (never #FFF) · title navy + light + left + not enlarged
+   · gold used ONLY as the 2px accent rule · square corners · no shadow/gradient/glow on the chrome
+   · ZERO icons (the icon allowance is content-slides-only — see SKILL.md "Icons"). */
+.slide.cover{padding:0;flex-direction:row;align-items:stretch;overflow:hidden}
+
+.cover-text{flex:0 0 55%;display:flex;flex-direction:column;justify-content:center;
+  padding:64px 56px;position:relative}
+.cover-title{font-size:var(--fs-title);font-weight:300;line-height:1.18;
+  color:var(--navy);max-width:560px;letter-spacing:0}
+.cover-date{position:absolute;left:56px;bottom:56px;
+  font-size:var(--fs-label);font-weight:400;color:var(--gray);letter-spacing:.02em}
+
+/* navy fallback: with no image this column is a flat --navy panel (still gold-barred); an image covers it */
+.cover-media{flex:1 1 45%;position:relative;overflow:hidden;background:var(--navy)}
+.cover-media img{width:100%;height:100%;object-fit:cover;display:block}
+/* gold 2px accent rule = the sanctioned framing bars (gold doing its ONE job — nothing else is gold) */
+.cover-frame{position:absolute;left:30px;right:30px;height:2px;background:var(--gold)}
+.cover-frame.top{top:44px}
+.cover-frame.bottom{bottom:44px}
+</style>
+</head>
+<body>
+  <div class="slide cover">
+
+    <!-- LEFT: title + date on ivory (title stays navy/light/left — never enlarged or recolored) -->
+    <div class="cover-text">
+      <h1 class="cover-title">Flora Project</h1>
+      <div class="cover-date">March 2026</div>
+    </div>
+
+    <!-- RIGHT: image column, bounded by the gold 2px accent rule (top + bottom).
+         No image provided -> the flat navy panel below IS the cover (the fallback).
+         Image provided -> uncomment the <img> + set src (it covers the navy). cover-sample.jpg = an example. -->
+    <div class="cover-media">
+      <!-- <img src="cover-sample.jpg" alt=""> -->
+      <div class="cover-frame top"></div>
+      <div class="cover-frame bottom"></div>
+    </div>
+
+  </div>
+</body>
+</html>

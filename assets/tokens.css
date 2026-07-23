@@ -1,0 +1,143 @@
+/* Anti-claude-slides-skill-1 — TOKENS (the saved palette + sizes) + FLAT PRIMITIVES.
+   This file is the single source of truth for color + type. Inline it into every delivered slide.
+   It contains TWO things ONLY:
+     (1) :root tokens  — the exact palette + type scale + spacing (your hard-rule values).
+     (2) flat primitive classes — single styled ELEMENTS that encode the rules (a band, a chip,
+         a rail field, a source foot…). These are building blocks, NOT layouts.
+   There are DELIBERATELY NO assembled / starter slides. Every slide is composed FRESH from these
+   primitives per the SKILL.md method. Do not redefine tokens or primitives per slide. */
+
+:root{
+  /* ---- palette: 4 signal roles + neutrals, on ivory (HARD-RULE hexes) ---- */
+  --ground:#FAFBFC;   /* slide ground — warm ivory. NEVER pure #FFFFFF. */
+  --panel:#F1F3F5;    /* faint region fill (a 2–4% tonal step) */
+  --hair:#E4E8EB;     /* hairline — lighter than the text it borders */
+  --ink:#25323B;      /* primary text */
+  --navy:#33485A;     /* structure: bands, chips, ink-strong */
+  --gray:#6B757C;     /* secondary text / inactive */
+  --muted:#9AA4AB;    /* tertiary / quiet */
+  --teal:#2F8F86;     /* ACTIVE — one meaning: current / selected / best / positive. The only saturated "good". */
+  --gold:#A9853F;     /* caveat / link / the thin 2px accent rule / scope tag. NEVER "active", never decoration. */
+  --on-navy:#FFFFFF;  /* text reversed on navy (white text is fine; the no-pure-white rule is about the GROUND). */
+
+  /* ---- type scale: 3–4 sizes, ratio contract title ~2x body / source ~0.7x body ---- */
+  --fs-title:30px;    /* slide title — light 300–400, navy/ink */
+  --fs-body:15px;     /* body / prose / bullets — 400 (700 = bold spine) */
+  --fs-value:14px;    /* rail values, metric labels — 400 / 700 name */
+  --fs-label:12px;    /* keys, chips, tags (UPPERCASE) — 600 */
+  --fs-source:11px;   /* source foot — 400 italic, muted */
+  --fs-metric:30px;   /* metric number — 600 navy, restrained: <= title, NEVER above title size. */
+
+  /* ---- spacing ---- */
+  --m:40px; --gap:14px; --pad:14px;
+
+  --font:'Montserrat',-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+
+/* THE UNIFIED SIGNAL (one signal = one meaning, deck-wide):
+   navy=structure/ink · gray=secondary/inactive · muted=tertiary
+   teal=ACTIVE (current/selected/best/positive — the ONLY saturated good)
+   gold=caveat/link/2px accent rule/scope tag (never active, never decoration)
+   bold=skim spine · ALL-CAPS=labels & tags only · italic=cited document titles
+   icons=monochrome currentColor beside labels (2-4 per content slide, <=1/region, <=6/slide, NEVER the cover)
+   Emphasis = BOLD WEIGHT in the same ink — NEVER color-for-emphasis. */
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+/* ---- the slide: 1280x720, ivory ground, flat, framed for standalone viewing ---- */
+body{display:flex;justify-content:center;background:#cfd4d8;font-family:var(--font)}
+.slide{width:1280px;height:720px;background:var(--ground);color:var(--ink);
+  font-family:var(--font);padding:var(--m);display:flex;flex-direction:column;position:relative}
+
+/* ---- text primitives ---- */
+/* THE HEADER IS ONE TITLE, ONE LINE: .title alone — a single title element on a single line (no wrapping; shorten until it fits).
+   No eyebrow/kicker above it, no subtitle/definer below it — those primitives are deliberately ABSENT;
+   do not recreate them. Framing/scope info belongs in content cells, never in the header. */
+.title{font-size:var(--fs-title);font-weight:400;line-height:1.2;color:var(--ink);max-width:1180px}
+/* NEVER add a border/rule beneath .title. Title is light, sentence/entity case, top-left, never centered. */
+b,.spine{font-weight:700}                 /* bold = skim spine; emphasis is weight, not color */
+i,em,cite{font-style:italic}              /* italic = cited document titles only */
+
+/* ---- key / label primitives (structure; a label NEVER floats as a heading) ---- */
+.key,.keycell,.keystrip{background:var(--panel);color:var(--gray);
+  font-size:var(--fs-label);font-weight:600;letter-spacing:.3px}
+.keycell{display:flex;align-items:center;justify-content:center;text-align:center;padding:var(--pad)}
+.keystrip{padding:8px var(--pad)}
+
+/* ---- band (navy header strip + 2px gold accent rule) ---- */
+.band{background:var(--navy);color:var(--on-navy);border-top:2px solid var(--gold);
+  padding:8px var(--pad);font-weight:600;font-size:var(--fs-value)}
+
+/* ---- panel (hairline-bounded cell; NEVER a lifted/shadowed/rounded card) ---- */
+.panel{border:1px solid var(--hair)}
+.panel-fill{background:var(--panel)}
+
+/* ---- kv field + rail (repeated key->value lookup column) ---- */
+.rail{display:flex;flex-direction:column;gap:var(--gap)}
+.field{display:flex;flex-direction:column}
+.chip{background:var(--navy);color:var(--on-navy);border-top:2px solid var(--gold);
+  font-size:var(--fs-label);font-weight:600;letter-spacing:.4px;text-transform:uppercase;
+  text-align:center;padding:7px}
+.val{background:var(--ground);border:1px solid var(--hair);border-top:none;
+  padding:12px var(--pad);font-size:var(--fs-value);text-align:center;line-height:1.4}
+.val .name{font-weight:700}
+.val .role{color:var(--gray);font-size:var(--fs-label)}
+
+/* ---- columns (N parallel equal columns) ---- */
+.cols{display:grid;gap:var(--gap)}
+.cols-2{grid-template-columns:repeat(2,1fr)}
+.cols-3{grid-template-columns:repeat(3,1fr)}
+.cols-4{grid-template-columns:repeat(4,1fr)}
+
+/* ---- state token (teal = active/on, gray hollow = inactive/off). ONE teal per comparison axis.
+   NOTE: the round border-radius here (and on the spine bullet below) is a FUNCTIONAL status mark,
+   NOT a "rounded marketing pill" and NOT a rounded card. The square-corners / flatness rule governs
+   panels, cells, chips, bands and cards — those all stay square. ---- */
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;
+  border:1.5px solid var(--gray);vertical-align:middle}
+.dot.on{background:var(--teal);border-color:var(--teal)}
+.dot.off{background:none}
+.state{display:inline-flex;align-items:center;gap:8px;font-weight:600}
+.is-active{background:rgba(47,143,134,.08);border-color:var(--teal)} /* faint active fill (no shadow/lift) */
+
+/* ---- icon (Lucide stroke icons — slight, functional wayfinding; CONTENT SLIDES ONLY, never the cover).
+   Monochrome via currentColor: an icon inherits its cell's text color, so it obeys the signal system
+   automatically (gray in a keystrip, white on a navy chip; teal/gold ONLY when the cell itself carries
+   that signal). Always beside the text label it reinforces — never a replacement for words, never
+   floating decoration. Every content slide carries 2-4 (>=1 always; <=1 per labeled region, <=6 per
+   slide); same concept = same icon deck-wide. SIZED TO BE SEEN: ~1.4em (~17px beside a 12px label) —
+   if the render shows specks, the icons are too small.
+   Embed: <script src="https://unpkg.com/lucide@latest"></script> + lucide.createIcons() at end of <body>;
+   write <i data-lucide="name" class="icon"></i>. Verify every name RENDERED in the screenshot. ---- */
+.icon{width:1.4em;height:1.4em;stroke-width:2;vertical-align:-.3em;flex:none}
+
+/* ---- scope / caveat tag (gold, UPPERCASE). "AT RISK" is a gold tag — never a red fill. ---- */
+.tag{color:var(--gold);font-size:var(--fs-label);font-weight:600;
+  letter-spacing:.5px;text-transform:uppercase}
+.tag-chip{position:absolute;top:0;right:0;background:var(--gold);color:#fff;
+  font-size:9px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;padding:3px 7px}
+
+/* ---- metric (restrained figure + cited delta). Number <= title, navy, NEVER on a colored chip. ---- */
+.metric{display:flex;flex-direction:column;gap:3px}
+.metric .num{font-size:var(--fs-metric);font-weight:600;color:var(--navy);line-height:1}
+.metric .num .unit{font-size:.5em;color:var(--muted);font-weight:400;margin-left:3px}
+.metric .mlabel{font-size:var(--fs-label);color:var(--gray);text-transform:uppercase;letter-spacing:.06em}
+.delta{font-size:var(--fs-value);font-weight:600}
+.delta.up{color:var(--teal)}      /* positive movement = teal (unified) */
+.delta.down{color:var(--gray)}    /* a decline is GRAY (▼), never red/gold */
+.delta.flat{color:var(--muted)}
+.delta .basis{font-weight:400;color:var(--muted)}
+.anchor{font-size:var(--fs-source);color:var(--muted);font-style:italic}
+
+/* ---- flow connector (process) — gold caret ---- */
+.conn{display:flex;align-items:center;justify-content:center;color:var(--gold);font-weight:700}
+
+/* ---- bullet spine (gray-dot fragments, bold spine) ---- */
+.spine-list{list-style:none}
+.spine-list li{position:relative;padding-left:16px;margin-bottom:6px;line-height:1.45}
+.spine-list li::before{content:"";position:absolute;left:0;top:.55em;width:5px;height:5px;
+  border-radius:50%;background:var(--gray)}
+
+/* ---- source foot (one quiet italic muted line, bottom-left; links underline-only) ---- */
+.source{font-size:var(--fs-source);color:var(--muted);font-style:italic;margin-top:auto;padding-top:12px}
+.source u{text-decoration:underline}   /* links = underline only — no blue, no raw URL */
