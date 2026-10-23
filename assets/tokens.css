@@ -141,3 +141,81 @@ i,em,cite{font-style:italic}              /* italic = cited document titles only
 /* ---- source foot (one quiet italic muted line, bottom-left; links underline-only) ---- */
 .source{font-size:var(--fs-source);color:var(--muted);font-style:italic;margin-top:auto;padding-top:12px}
 .source u{text-decoration:underline}   /* links = underline only — no blue, no raw URL */
+
+/* ============================================================================
+   NAMED PALETTE OVERLAY — BM (Bint Majed for Good)
+   Opt-in only. Never applied unless the user names it ("use BM colors").
+   Hexes are lifted verbatim from the 2026 partnership brochure's PDF content
+   stream. Do not invent tints, and do not add a gold or a teal: the brochure
+   carries exactly one saturated hue.
+   Usage: add class="bm" to <body>, or :root-scope it into a single deck.
+   ========================================================================= */
+.bm{
+  --ground:#FFFFFF;   /* the no-pure-white rule is waived under BM, as under ODA */
+  --panel:#D9E4F8;    /* pale blue tint — panels, watermark line art */
+  --hair:#D9E4F8;     /* hairlines use the same tint */
+  --ink:#22304A;      /* body ink — TEXT ONLY */
+  --ink-strong:#0B2451; /* headings — TEXT ONLY */
+  --navy:#004AAC;     /* structure: bands, chips, icon tiles, metric numerals */
+  --gray:#55627E;     /* secondary text, small-caps labels, captions */
+  --muted:#55627E;    /* BM has no third neutral; tertiary collapses into slate */
+  --teal:#004AAC;     /* ACTIVE shares the signature blue — separate by weight/size, never by hue */
+  --gold:#55627E;     /* caveat / 2px accent rule — slate, never a warm colour */
+  --on-navy:#FFFFFF;
+}
+/* Reverse ground: cover and section dividers ONLY. Never a dense fact-card slide. */
+.bm.reverse{ --ground:#004AAC; --ink:#FFFFFF; --ink-strong:#FFFFFF; --gray:#D9E4F8;
+             --muted:#D9E4F8; --panel:#004AAC; --hair:#D9E4F8; }
+
+/* ============================================================================
+   NAMED PALETTE OVERLAY: PF (Pixel Falcons)
+   Opt-in only. Never applied unless the user names it ("use PF colors").
+   Hexes lifted verbatim from the Pixel Falcons deck tokens (35 slides,
+   ~/Downloads/pixel-falcons-v5-renders/ etc.). Forest greens on warm cream,
+   falcon gold accent. Token names map 1:1; do not invent tints.
+   Usage: add class="pf" to <body>, or :root-scope it into a single deck.
+   ========================================================================= */
+.pf{
+  --ground:#F1ECE0;   /* warm cream ground */
+  --panel:#E6DFCE;    /* panels / cards */
+  --hair:#CFC6B0;     /* hairlines / borders */
+  --ink:#0F1A14;      /* primary text, near-black green */
+  --navy:#1F4D3A;     /* structure: deep forest green: bands, chips, icon tiles, metric numerals */
+  --gray:#5A6258;     /* secondary text */
+  --muted:#8C9183;    /* tertiary / quiet, source foot */
+  --teal:#2A6B3A;     /* ACTIVE: green */
+  --gold:#E8B81E;     /* falcon gold: caveat / 2px accent rule / scope tag */
+  --on-navy:#F1ECE0;  /* text reversed on forest green is cream, not white */
+}
+/* Reverse ground: cover and section dividers ONLY. */
+.pf.reverse{ --ground:#1F4D3A; --ink:#F1ECE0; --gray:#E6DFCE; --muted:#CFC6B0;
+             --panel:#1F4D3A; --hair:#2A6B3A; }
+
+/* ============================================================================
+   NAMED PALETTE OVERLAY: FH
+   Opt-in only. Never applied unless the user names it ("use FH colors").
+   Hexes taken verbatim from the FH brand colour sheet (sent by the user on
+   23 Oct 2026). Primary: Clay, Light Clay, Deep Teal, Mint, Ink, Ivory.
+   Supporting: Teal, Sage, Soft Grey; data: Deep Teal + Grey; code colours
+   Positive #557A7C, Semi-positive #6E7852, Neutral #C3D9DD,
+   Semi-negative #96634E, Negative #536260. Do not invent tints beyond the
+   sheet's 20/40/60/90% transparencies.
+   Usage: add class="fh" to <body>, or :root-scope it into a single deck.
+   ========================================================================= */
+.fh{
+  --ground:#FAFBFC;   /* Ivory */
+  --panel:#D1E3D4;    /* Mint: panels, header bands */
+  --hair:#C3D9DD;     /* Neutral (code colour): hairlines */
+  --ink:#24322F;      /* Ink: primary text */
+  --navy:#36565A;     /* Deep Teal: structure: bands, chips, icon tiles, metric numerals */
+  --gray:#647670;     /* Soft Grey: secondary text, small-caps labels */
+  --muted:#536260;    /* Grey: tertiary, source foot */
+  --teal:#557A7C;     /* Teal (= Positive): ACTIVE */
+  --gold:#96634E;     /* Clay: 2px accent rule, caveat / scope tag (Semi-negative) */
+  --on-navy:#FAFBFC;
+  --clay-light:#B69283; /* Light Clay: secondary warm accent, sparingly */
+  --sage:#6E7852;     /* Sage (= Semi-positive): data series only */
+}
+/* Reverse ground: cover and section dividers ONLY. */
+.fh.reverse{ --ground:#36565A; --ink:#FAFBFC; --gray:#D1E3D4; --muted:#C3D9DD;
+              --panel:#36565A; --hair:#557A7C; }

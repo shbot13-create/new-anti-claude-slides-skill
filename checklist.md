@@ -17,7 +17,7 @@ citing the rule. These map 1:1 to the hard rules in `SKILL.md`. No exceptions, n
 ## 1. Typography
 - [ ] **Montserrat only** — one family; hierarchy from weight + size + color, no 2nd typeface.
 - [ ] Only the **3–4 sizes** in the scale: title 30px · body 15px · value 14px · label 12px · source 11px.
-- [ ] **Title** is light (300–400), navy/ink, sentence/entity case, **not big-and-bold, not centered**.
+- [ ] **Title** is Regular 400, navy/ink, sentence/entity case, **not big-and-bold, not centered**.
 - [ ] **Header is ONE title on ONE line** — a single title element, **no wrapping**: a very short
       summary sentence of the slide (shorten until it fits one line); **no eyebrow above, no
       subtitle/definer below**; framing/scope info lives in content cells, not the header.
@@ -85,7 +85,7 @@ citing the rule. These map 1:1 to the hard rules in `SKILL.md`. No exceptions, n
 
 ## 8. Cover slide (apply ONLY to the deck cover — see SKILL.md **THE COVER**)
 - [ ] Started from **`assets/cover.html`**; only the **title, date, and image** slots were changed.
-- [ ] **Title** navy/ink, **light 300**, left-aligned, sentence/entity case, **at title size** — not
+- [ ] **Title** navy/ink, **Regular 400**, left-aligned, sentence/entity case, **at title size** — not
       enlarged, centered, or recolored (**no gold title**); **no rule beneath it.**
 - [ ] **Gold appears ONLY as the two 2px frame bars** — nowhere else on the slide.
 - [ ] **Zero icons** anywhere on the cover (the §7 allowance is content-slides-only).
@@ -100,7 +100,8 @@ citing the rule. These map 1:1 to the hard rules in `SKILL.md`. No exceptions, n
 ## §9 V2 additions (user-added rules — gate every slide on these too)
 - [ ] **Palette**: default palette unless the user NAMED an optional palette (e.g. ODA). Under ODA:
       locked hexes only, no invented grays/tints, no brown (`#815B3B`), no dark icon fills —
-      icon tiles are blue with white icons; white ground is allowed.
+      icon tiles are blue with white icons; white ground is allowed. Under PF: locked Pixel Falcons
+      hexes only, cream ground (never white), cream text on forest, gold never used for body text.
 - [ ] **One font**: Montserrat everywhere, including titles and covers. No serif, no second family.
       NEVER Thin or Light (100-300): minimum weight Regular 400, titles included; no light weights
       in the font link; PPTX exports must resolve static weights, not a variable-font Thin instance.

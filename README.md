@@ -2,7 +2,7 @@
 
 A Claude Code skill for building dense, institutional, fact-card slide decks:
 Montserrat only, single-line titles, no em-dashes, facts-only with flagged opinions,
-optional named palettes (ODA), sanctioned real vendor logos, an entity-profile card
+optional named palettes (ODA, BM, PF, FH), sanctioned real vendor logos, an entity-profile card
 template, and an airy logo-row variant for overloaded slides.
 Outputs self-contained 1280x720 HTML per slide, a merged PDF, and (on request)
 a fully native, editable PPTX.

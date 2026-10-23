@@ -1,6 +1,6 @@
 ---
 name: New-anti-claude-slides-skill
-description: "V2 of the anti-claude slide system: dense fact-card slides, Montserrat only, single-line titles, no em-dashes, facts-only with flagged opinions, optional named palettes (ODA), sanctioned real vendor logos, an entity-profile card template, and an airy logo-row variant for overloaded slides. Use when creating, generating, designing, building, or reviewing slides, decks, presentations, one-pagers, briefings, profile cards, comparisons, timelines, status boards, or metric readouts. Outputs self-contained 1280x720 HTML plus optional native PPTX. NO templates for content slides; every slide is composed fresh from tokens + primitives, gated by a checklist. Prefer this skill over Anti-claude-slides-skill-1 unless the user asks for the original."
+description: "V2 of the anti-claude slide system: dense fact-card slides, Montserrat only, single-line titles, no em-dashes, facts-only with flagged opinions, optional named palettes (ODA, BM, PF, FH), sanctioned real vendor logos, an entity-profile card template, and an airy logo-row variant for overloaded slides. Use when creating, generating, designing, building, or reviewing slides, decks, presentations, one-pagers, briefings, profile cards, comparisons, timelines, status boards, or metric readouts. Outputs self-contained 1280x720 HTML plus optional native PPTX. NO templates for content slides; every slide is composed fresh from tokens + primitives, gated by a checklist. Prefer this skill over Anti-claude-slides-skill-1 unless the user asks for the original."
 ---
 
 # New Anti-Claude Slides Skill (V2)
@@ -26,6 +26,8 @@ the deck is always the fewest slides the content allows.
 - **ODA palette** — say "use ODA colors": swaps the default navy/gray/teal/gold tokens for the locked
   ODA set (steel blue `#678CA6`, blue tint `#D6E3EB`, sand golds `#C19667`/`#E2B06E`, deep teal ink,
   white ground). Under ODA there is no gray, no brown, and icon tiles are blue with white icons.
+- **PF palette**: say "use PF colors": the Pixel Falcons set (forest green `#1F4D3A`, green
+  `#2A6B3A`, falcon gold `#E8B81E`, warm cream ground `#F1ECE0`). Class `.pf` in `tokens.css`.
   Other named palettes can be added the same way; the default palette always stays unless you name one.
 - **Airy logo-row layout** — used automatically when a slide has too many items for bounded cells
   (so it does not look boxy), or on request: hairline-separated rows with logos/icon tiles, and the
@@ -184,6 +186,44 @@ bands, chips, secondary text, $ marks), `oda-blue-tint #D6E3EB` (panels, hairlin
 ONLY), `oda-night #111F22` (footnote text, TEXT ONLY), `oda-paper #FFFFFF` (ground — the no-pure-white
 rule is waived under ODA). Under ODA: **no brown** (avoid `oda-bronze #815B3B`) and **no dark icon
 fills** — icon tiles are `oda-blue` with white icons; there is no gray, secondary text is `oda-blue`.
+
+**BM palette (Bint Majed for Good — locked hexes, taken from the 2026 partnership brochure; no
+invented tints, no gold, no teal):** `bm-blue #004AAC` (the signature — structure, bands, chips, icon
+tiles, metric numerals, AND the ACTIVE signal), `bm-navy-deep #0B2451` (headings, ink-strong, TEXT
+ONLY), `bm-navy #22304A` (body ink, TEXT ONLY), `bm-slate #55627E` (secondary text, small-caps labels,
+captions, and the 2px accent rule / caveat tag), `bm-tint #D9E4F8` (panels, hairlines, watermark line
+art), `bm-paper #FFFFFF` (ground — the no-pure-white rule is waived under BM, as under ODA).
+Under BM: **there is no gold and no teal.** The brochure carries one saturated hue only, so ACTIVE and
+structure share `bm-blue`; distinguish them by weight and size, never by inventing a second hue. Caveat
+and accent duties fall to `bm-slate` — never to a warm colour. Icon tiles are `bm-blue` with white
+icons. Secondary text is `bm-slate`, not gray.
+**BM reverse ground (cover and section dividers only):** a full bleed of `bm-blue` with all type in
+`bm-paper`. This mirrors the brochure, which alternates flood-blue pages against white ones. Content
+slides stay on the light ground; never run a dense fact-card slide reversed.
+
+**PF palette (Pixel Falcons: locked hexes, taken from the Pixel Falcons deck tokens; no invented
+tints):** `pf-forest #1F4D3A` (the signature: structure, bands, chips, icon tiles, metric numerals),
+`pf-green #2A6B3A` (ACTIVE: current / selected / best / positive), `pf-gold #E8B81E` (falcon gold:
+2px accent rule, caveat / scope tags; never decoration, never active), `pf-ink #0F1A14` (primary
+text), `pf-gray #5A6258` (secondary text), `pf-muted #8C9183` (tertiary, source foot),
+`pf-cream #F1ECE0` (ground, and text reversed on forest), `pf-panel #E6DFCE` (panels / cards),
+`pf-hair #CFC6B0` (hairlines). Under PF: the ground is warm cream, never white; text on forest is
+cream `#F1ECE0`, not white; icon tiles are `pf-forest` with cream icons. Gold is bright, so never
+set body text in gold on cream (contrast fails); use it for rules, tags, and fills only.
+**PF reverse ground (cover and section dividers only):** a full bleed of `pf-forest` with type in
+`pf-cream` and a gold accent rule. Content slides stay on the cream ground.
+
+**FH palette (locked hexes from the FH brand colour sheet, 23 Oct 2026; no invented tints beyond
+the sheet's 20/40/60/90% transparencies):** `fh-deep-teal #36565A` (signature: structure, bands,
+chips, icon tiles, metric numerals), `fh-teal #557A7C` (ACTIVE / Positive), `fh-clay #96634E` (2px
+accent rule, caveat and scope tags; also Semi-negative), `fh-light-clay #B69283` (secondary warm
+accent, sparingly), `fh-mint #D1E3D4` (panels, header bands), `fh-neutral #C3D9DD` (hairlines;
+Neutral), `fh-ink #24322F` (primary text), `fh-soft-grey #647670` (secondary text, labels),
+`fh-grey #536260` (tertiary, source foot; Negative), `fh-sage #6E7852` (data series / Semi-positive
+only), `fh-ivory #FAFBFC` (ground). Under FH: icon tiles are deep teal with ivory icons; Clay is
+never body text and never the ACTIVE signal. Class `.fh` in `tokens.css`.
+**FH reverse ground (cover and section dividers only):** a full bleed of `fh-deep-teal` with ivory
+type and a clay accent rule.
 
 ## V2.2 One font, ever — and NEVER Montserrat Thin
 Montserrat only — reaffirmed and absolute. No serif display face, no second family for titles,
