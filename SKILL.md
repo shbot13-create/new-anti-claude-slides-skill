@@ -1,6 +1,6 @@
 ---
 name: New-anti-claude-slides-skill
-description: "V2 of the anti-claude slide system: dense fact-card slides, Montserrat only, single-line titles, no em-dashes, facts-only with flagged opinions, optional named palettes (ODA, BM, PF, FH), sanctioned real vendor logos, an entity-profile card template, and an airy logo-row variant for overloaded slides. Use when creating, generating, designing, building, or reviewing slides, decks, presentations, one-pagers, briefings, profile cards, comparisons, timelines, status boards, or metric readouts. Outputs self-contained 1280x720 HTML plus optional native PPTX. NO templates for content slides; every slide is composed fresh from tokens + primitives, gated by a checklist. Prefer this skill over Anti-claude-slides-skill-1 unless the user asks for the original."
+description: "V2 of the anti-claude slide system: dense fact-card slides, Montserrat only, single-line titles, no em-dashes, facts-only with flagged opinions, optional named palettes (ODA, BM, PF, FH), a readable mode, section chips with takeaway bands, deck-wide category colours, a whole-deck repeat check, sanctioned real vendor logos, an entity-profile card template, and an airy logo-row variant for overloaded slides. Use when creating, generating, designing, building, or reviewing slides, decks, presentations, one-pagers, briefings, profile cards, comparisons, timelines, status boards, or metric readouts. Outputs self-contained 1280x720 HTML plus optional native PPTX. NO templates for content slides; every slide is composed fresh from tokens + primitives, gated by a checklist. Prefer this skill over Anti-claude-slides-skill-1 unless the user asks for the original."
 ---
 
 # New Anti-Claude Slides Skill (V2)
@@ -287,6 +287,69 @@ screenshot-verify, then print-to-pdf with `@page 1280px 720px; margin 0`). When 
 editable deck, additionally build a NATIVE PPTX (python-pptx: every band/card/panel/pill a real shape,
 all text as textboxes, logos/icons as embedded PNGs, 1px = 9525 EMU, font px x 0.75 = pt), verified by
 LibreOffice conversion before delivery.
+
+## V2.11 Readable mode (when the user says the deck is too dense or too text-heavy)
+The dense fact-card default is the starting point, not a floor. When the user says a slide is text
+heavy, or asks for "simpler", "less dense" or "focus on trends", switch the whole deck to readable mode:
+- Cut the words by about half or more (the military-software deck went from 2,261 to 821 words on its
+  content slides). Shorten copy; never shrink the type to make it fit.
+- Body text at least 13pt (17px), item titles 15pt, labels 9pt. Nothing else on a content slide
+  below 11pt.
+- Open grids (4x2, 3x2, rows with hairlines) instead of boxed cells; no borders or panels around
+  every item.
+- Titles state the trend or the finding ("Military software buying is getting bigger and faster"), not
+  the topic ("Procurement").
+- One idea per item: a name, one line on what it is, one anchored number or date.
+
+## V2.12 Section chip and takeaway band (optional header, on request)
+The base spec bans eyebrows and subtitles. When the user asks to make it clearer what each slide is,
+add this header to every content slide (never the cover) and keep it identical across the deck:
+- **Section chip** above the title: a small `--navy` filled rectangle with the section number and name
+  in uppercase, 12px SemiBold, `--on-navy` text ("4 · BUYING TRENDS"). Numbered in deck order;
+  renumber every chip (and page number) whenever slides move or are added.
+- **Title** below the chip, same rules as always (single line, Regular 400).
+- **Takeaway band** under the title: a full-width `--panel` band with a 3px `--gold` left rule, one
+  sentence of **14 words or fewer** with **one bold key phrase**. It says what the reader should
+  conclude, not what the slide contains. Count the words; fail the build at 15.
+Content starts below the band. The foot, page number and density rules still hold.
+
+## V2.13 Category colour coding (consistent across the deck)
+When a deck sorts items into categories and the user wants them colour-coded:
+- **One fixed colour per category for the whole deck.** The first slide that lists the categories
+  is the key; every later mention of a category uses that exact colour.
+- **The categorical set is separate from the palette's signal colours.** A palette's greys and
+  near-tints look alike side by side, so do not build categories from them. Use clearly different
+  hues, muted to sit with the active palette. Proven set (with FH): deep teal `#36565A`, orange
+  `#C2702E`, purple `#6B4C8A`, blue `#3F6FA6`, green `#5E8A35`, mustard `#C9A227`, slate `#7B8794`,
+  red `#A8373B`. This is the one sanctioned exception to "no red / no green": the hues mean a
+  category, never good or bad, so never reuse them as status signals in the same deck.
+- **How a category shows on an item:** a 9px square plus the category name in that colour (12px
+  SemiBold), and optionally a 4-5px top bar in that colour on the item's card. Icon tiles may take the
+  category colour. All other text stays in the palette's ink and greys.
+- **Check the set in the render:** if any two categories are hard to tell apart, swap their hues and
+  re-check.
+- **Group items by category, in the key's order,** on every slide that lists them; inside a group
+  keep the original order.
+
+## V2.14 Keep each item's parts together when you reorder
+When rows or cards are sorted, grouped or regrouped (V2.13), every part of an item moves as one
+record: its text, icon, flag, logo, photo, chip and number. Never sort the text list and then place
+icons or flags from a separately ordered list. Build each item as one tuple (or object) and draw
+everything from it. After the render, check by eye that every icon, flag and logo matches the words
+beside it.
+
+## V2.15 Whole-deck check: no repeats, no look-alike slides
+The checklist gates each slide; this rule gates the deck. Before delivery, list every system,
+company, number, quote and photo on every slide, then check:
+- **Each fact appears once.** A system may come back only when the later slide adds something new
+  about it, and never with the same number repeated word for word. If a slide's items mostly repeat
+  earlier slides, replace them with new verified items or merge the slides.
+- **Each photo and image appears once in the deck.**
+- **No two slides in a row share the same layout.** If two slides look alike (same grid, same panel,
+  same card shape), redesign one so its structure differs (for example a dark panel with big stats
+  versus a card grid), not just its colours.
+- **Check the spread:** if the same two or three firms or sources dominate most slides, say so and
+  widen the coverage.
 
 # THE COVER — the ONE sanctioned exception to Rule 0
 A deck needs a title slide, and a cover is **not** a fact-card. The cover is the **single** reusable

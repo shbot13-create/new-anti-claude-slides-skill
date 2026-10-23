@@ -121,3 +121,19 @@ citing the rule. These map 1:1 to the hard rules in `SKILL.md`. No exceptions, n
 - [ ] **Foot**: upright 11px darkest-ink source line, minimized, page number far right (none on covers).
 - [ ] **Deliverables**: HTML + merged PDF always (render-verified); native shape-level PPTX when an
       editable deck is requested, verified via LibreOffice conversion before delivery.
+- [ ] **Readable mode** (only when the user asked for less density): words cut by about half or
+      more, body 13pt or larger, nothing below 11pt, open grids, trend-style titles, one idea per item.
+- [ ] **Section chip and takeaway band** (only when requested): numbered navy chip above the title,
+      renumbered after any move; mint takeaway band with a 3px gold left rule, 14 words or fewer,
+      one bold key phrase; identical on every content slide, never on the cover.
+- [ ] **Category colours**: one fixed hue per category across the deck, matching the key slide;
+      categorical hues distinct from each other in the render and never reused as status signals;
+      items grouped by category in key order.
+- [ ] **Rows stay whole**: after any sort or regroup, every icon, flag, logo and photo matches the
+      text beside it (checked by eye on the render).
+
+## §10 Whole-deck gate (run once on the full deck, after every slide passes)
+- [ ] Every system, company, number, quote and photo is listed per slide; no fact or photo repeats
+      unless the later slide adds something new, and no number is repeated word for word.
+- [ ] No two slides in a row share the same layout.
+- [ ] Coverage is not dominated by the same two or three firms or sources; if it is, it is flagged.
