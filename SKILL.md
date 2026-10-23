@@ -1,6 +1,6 @@
 ---
 name: New-anti-claude-slides-skill
-description: "V2 of the anti-claude slide system: dense fact-card slides, Montserrat only, single-line titles, no em-dashes, facts-only with flagged opinions, optional named palettes (ODA, BM, PF, FH), a readable mode, section chips with takeaway bands, deck-wide category colours, a whole-deck repeat check, sanctioned real vendor logos, an entity-profile card template, and an airy logo-row variant for overloaded slides. Use when creating, generating, designing, building, or reviewing slides, decks, presentations, one-pagers, briefings, profile cards, comparisons, timelines, status boards, or metric readouts. Outputs self-contained 1280x720 HTML plus optional native PPTX. NO templates for content slides; every slide is composed fresh from tokens + primitives, gated by a checklist. Prefer this skill over Anti-claude-slides-skill-1 unless the user asks for the original."
+description: "V2 of the anti-claude slide system: dense fact-card slides, Montserrat only, single-line titles, no em-dashes, facts-only with flagged opinions, optional named palettes (ODA, PF, FH), a readable mode, section chips with takeaway bands, deck-wide category colours, a whole-deck repeat check, sanctioned real vendor logos, an entity-profile card template, and an airy logo-row variant for overloaded slides. Use when creating, generating, designing, building, or reviewing slides, decks, presentations, one-pagers, briefings, profile cards, comparisons, timelines, status boards, or metric readouts. Outputs self-contained 1280x720 HTML plus optional native PPTX. NO templates for content slides; every slide is composed fresh from tokens + primitives, gated by a checklist. Prefer this skill over Anti-claude-slides-skill-1 unless the user asks for the original."
 ---
 
 # New Anti-Claude Slides Skill (V2)
@@ -186,20 +186,6 @@ bands, chips, secondary text, $ marks), `oda-blue-tint #D6E3EB` (panels, hairlin
 ONLY), `oda-night #111F22` (footnote text, TEXT ONLY), `oda-paper #FFFFFF` (ground — the no-pure-white
 rule is waived under ODA). Under ODA: **no brown** (avoid `oda-bronze #815B3B`) and **no dark icon
 fills** — icon tiles are `oda-blue` with white icons; there is no gray, secondary text is `oda-blue`.
-
-**BM palette (Bint Majed for Good — locked hexes, taken from the 2026 partnership brochure; no
-invented tints, no gold, no teal):** `bm-blue #004AAC` (the signature — structure, bands, chips, icon
-tiles, metric numerals, AND the ACTIVE signal), `bm-navy-deep #0B2451` (headings, ink-strong, TEXT
-ONLY), `bm-navy #22304A` (body ink, TEXT ONLY), `bm-slate #55627E` (secondary text, small-caps labels,
-captions, and the 2px accent rule / caveat tag), `bm-tint #D9E4F8` (panels, hairlines, watermark line
-art), `bm-paper #FFFFFF` (ground — the no-pure-white rule is waived under BM, as under ODA).
-Under BM: **there is no gold and no teal.** The brochure carries one saturated hue only, so ACTIVE and
-structure share `bm-blue`; distinguish them by weight and size, never by inventing a second hue. Caveat
-and accent duties fall to `bm-slate` — never to a warm colour. Icon tiles are `bm-blue` with white
-icons. Secondary text is `bm-slate`, not gray.
-**BM reverse ground (cover and section dividers only):** a full bleed of `bm-blue` with all type in
-`bm-paper`. This mirrors the brochure, which alternates flood-blue pages against white ones. Content
-slides stay on the light ground; never run a dense fact-card slide reversed.
 
 **PF palette (Pixel Falcons: locked hexes, taken from the Pixel Falcons deck tokens; no invented
 tints):** `pf-forest #1F4D3A` (the signature: structure, bands, chips, icon tiles, metric numerals),

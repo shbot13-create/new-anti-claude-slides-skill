@@ -143,31 +143,6 @@ i,em,cite{font-style:italic}              /* italic = cited document titles only
 .source u{text-decoration:underline}   /* links = underline only — no blue, no raw URL */
 
 /* ============================================================================
-   NAMED PALETTE OVERLAY — BM (Bint Majed for Good)
-   Opt-in only. Never applied unless the user names it ("use BM colors").
-   Hexes are lifted verbatim from the 2026 partnership brochure's PDF content
-   stream. Do not invent tints, and do not add a gold or a teal: the brochure
-   carries exactly one saturated hue.
-   Usage: add class="bm" to <body>, or :root-scope it into a single deck.
-   ========================================================================= */
-.bm{
-  --ground:#FFFFFF;   /* the no-pure-white rule is waived under BM, as under ODA */
-  --panel:#D9E4F8;    /* pale blue tint — panels, watermark line art */
-  --hair:#D9E4F8;     /* hairlines use the same tint */
-  --ink:#22304A;      /* body ink — TEXT ONLY */
-  --ink-strong:#0B2451; /* headings — TEXT ONLY */
-  --navy:#004AAC;     /* structure: bands, chips, icon tiles, metric numerals */
-  --gray:#55627E;     /* secondary text, small-caps labels, captions */
-  --muted:#55627E;    /* BM has no third neutral; tertiary collapses into slate */
-  --teal:#004AAC;     /* ACTIVE shares the signature blue — separate by weight/size, never by hue */
-  --gold:#55627E;     /* caveat / 2px accent rule — slate, never a warm colour */
-  --on-navy:#FFFFFF;
-}
-/* Reverse ground: cover and section dividers ONLY. Never a dense fact-card slide. */
-.bm.reverse{ --ground:#004AAC; --ink:#FFFFFF; --ink-strong:#FFFFFF; --gray:#D9E4F8;
-             --muted:#D9E4F8; --panel:#004AAC; --hair:#D9E4F8; }
-
-/* ============================================================================
    NAMED PALETTE OVERLAY: PF (Pixel Falcons)
    Opt-in only. Never applied unless the user names it ("use PF colors").
    Hexes lifted verbatim from the Pixel Falcons deck tokens (35 slides,
